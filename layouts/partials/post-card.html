@@ -1,0 +1,23 @@
+<article class="post-card{{ if not .Params.thumbnail }} post-card--no-thumb{{ end }}">
+  <a href="{{ .Permalink }}" class="post-card-link">
+    {{ with .Params.thumbnail }}
+      <div class="post-card-thumbnail">
+        <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+      </div>
+    {{ end }}
+    <div class="post-card-body">
+      <time class="post-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      <h2 class="post-card-title">{{ .Title }}</h2>
+      {{ with .Params.summary }}
+        <p class="post-card-summary">{{ . }}</p>
+      {{ end }}
+      {{ with .Params.tags }}
+        <div class="post-card-tags">
+          {{ range . }}
+            <span class="post-card-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </a>
+</article>

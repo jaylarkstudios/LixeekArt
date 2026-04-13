@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      {{ with .Site.Home.OutputFormats.Get "RSS" }}
+        <a href="{{ .Permalink }}" class="rss-link">RSS Feed</a>
+      {{ end }}
+    </div>
+    <p class="footer-copyright">&copy; {{ now.Year }} {{ .Site.Title }}</p>
+  </div>
+</footer>

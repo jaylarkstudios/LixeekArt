@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <section class="hero">
+    <h1 class="hero-title">{{ .Site.Title }}</h1>
+    {{ with .Content }}
+      <div class="hero-bio">{{ . }}</div>
+    {{ end }}
+  </section>
+
+  <div class="divider"></div>
+
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ if $posts }}
+    <section>
+      <h2 class="section-heading">Recent Posts</h2>
+      <div class="post-list">
+        {{ range first 6 $posts.ByDate.Reverse }}
+          {{ partial "post-card.html" . }}
+        {{ end }}
+      </div>
+      {{ if gt (len $posts) 6 }}
+        <div class="view-all-container">
+          <a href="/posts/" class="btn-view-all">View all posts</a>
+        </div>
+      {{ end }}
+    </section>
+  {{ end }}
+{{ end }}

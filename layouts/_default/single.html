@@ -1,0 +1,59 @@
+{{ define "main" }}
+  <article class="post-single">
+    <header class="post-single-header">
+      <h1>{{ .Title }}</h1>
+      <div class="post-single-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        <span>&middot;</span>
+        <span>{{ .ReadingTime }} min read</span>
+      </div>
+      {{ with .Params.tags }}
+        <div class="post-single-tags">
+          {{ range . }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-pill">{{ . }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </header>
+
+    {{ with .Params.thumbnail }}
+      <img src="{{ . }}" alt="{{ $.Title }}" class="post-single-thumbnail">
+    {{ end }}
+
+    {{ with .Params.youtube }}
+      {{ $videoID := . }}
+      {{ if findRE `youtube\.com/watch\?v=` . }}
+        {{ $videoID = replaceRE `.*[?&]v=([^&]+).*` "$1" . }}
+      {{ else if findRE `youtu\.be/` . }}
+        {{ $videoID = replaceRE `.*youtu\.be/([^?]+).*` "$1" . }}
+      {{ end }}
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/{{ $videoID }}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          title="{{ $.Title }}"></iframe>
+      </div>
+    {{ end }}
+
+    <div class="post-single-content">
+      {{ .Content }}
+    </div>
+
+    <nav class="post-nav">
+      {{ with .PrevInSection }}
+        <a href="{{ .Permalink }}" class="post-nav-prev">
+          <span class="post-nav-label">&laquo; Previous</span>
+          <span class="post-nav-title">{{ .Title }}</span>
+        </a>
+      {{ end }}
+      {{ with .NextInSection }}
+        <a href="{{ .Permalink }}" class="post-nav-next">
+          <span class="post-nav-label">Next &raquo;</span>
+          <span class="post-nav-title">{{ .Title }}</span>
+        </a>
+      {{ end }}
+    </nav>
+  </article>
+{{ end }}

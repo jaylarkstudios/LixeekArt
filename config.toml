@@ -1,0 +1,36 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Lixeek's Art Blog"
+
+[taxonomies]
+  tag = "tags"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  name = "Tags"
+  url = "/tags/"
+  weight = 3
+
+[params]
+  description = "Art, videos, and updates by Lixeek"
+  author = "Lixeek"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+paginate = 12
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <section class="page-header">
+    <h1>Tags</h1>
+    <p class="page-description">Browse posts by tag</p>
+  </section>
+
+  <div class="tag-terms-list">
+    {{ range .Pages.ByTitle }}
+      <a href="{{ .Permalink }}" class="tag-term">
+        {{ .Title }}
+        <span class="tag-term-count">({{ len .Pages }})</span>
+      </a>
+    {{ end }}
+  </div>
+{{ end }}
