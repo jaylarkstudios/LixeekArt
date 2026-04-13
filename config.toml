@@ -1,6 +1,6 @@
 baseURL = "https://lixeek.com/"
 languageCode = "en-us"
-title = "Lixeek's Art Blog"
+title = "Lixeek's Blog"
 
 [taxonomies]
   tag = "tags"
