@@ -19,7 +19,7 @@
       </div>
       {{ if gt (len $posts) 6 }}
         <div class="view-all-container">
-          <a href="/posts/" class="btn-view-all">View all posts</a>
+          <a href="{{ "posts/" | relURL }}" class="btn-view-all">View all posts</a>
         </div>
       {{ end }}
     </section>
