@@ -4,6 +4,7 @@ title = "Lixeek's Blog"
 
 [taxonomies]
   tag = "tags"
+  category = "categories"
 
 [[menu.main]]
   name = "Home"
@@ -16,9 +17,19 @@ title = "Lixeek's Blog"
   weight = 2
 
 [[menu.main]]
+  name = "Art"
+  url = "/categories/art/"
+  weight = 3
+
+[[menu.main]]
+  name = "Photos"
+  url = "/categories/photos/"
+  weight = 4
+
+[[menu.main]]
   name = "Tags"
   url = "/tags/"
-  weight = 3
+  weight = 5
 
 [params]
   description = "Art, videos, and updates by Lixeek"
